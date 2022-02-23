@@ -5,4 +5,4 @@ logistic_regression/testing_income/**
 logistic_regression/testing_mnist/**
 logistic_regression/training_mnist/**
 logistic_regression/training_income/**
-**/pycache/**
+**/__pycache__/**
