@@ -3,8 +3,7 @@ import os
 import numpy as np
 from sklearn.metrics import accuracy_score, log_loss
 import time
-
-model_dir = "round-3-weights.npz"
+import sys
 
 def get_test(dir = 'testing'):
     X_dir = os.path.join(dir, "test_X.npy")
@@ -36,8 +35,11 @@ def result(model, X_test, y_test):
 
 if __name__ == "__main__":
     # change directory between mnist and housing
-    xtrain, ytrain = get_train(num=2)
-    xtest, ytest = get_test()
+    dir_train = sys.argv[0] #training_mnist or training_income
+    dir_test = sys.argv[1] #testing_mnist or testing_income
+    n = int(sys.argv[2]) # amount of data: 4, 8
+    xtrain, ytrain = get_train(dir = dir_train, num=n)
+    xtest, ytest = get_test(dir = dir_test)
     start = time.time()
     model = train_logistic(xtrain, ytrain)
     loss, accuracy = result(model, xtest, ytest)

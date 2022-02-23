@@ -3,11 +3,15 @@ import torch
 from model import *
 from torch.utils.data import DataLoader
 import time
+import sys
 
-test_data = torch.load('base/test.pt')
-train_data = torch.load('base/train0.pt')
-for i in range(1, 4):
-    t = torch.load('base/train' + str(i) +'.pt')
+epochs = int(sys.argv[0]) # number of rounds
+data_num = int(sys.argv[1]) # batches of data >= 1
+
+test_data = torch.load('testing.pt')
+train_data = torch.load('training/train0.pt')
+for i in range(1, data_num):
+    t = torch.load('training/train' + str(i) +'.pt')
     train_data = torch.cat((train_data, t))
 
 trainloader = DataLoader(train_data, batch_size=32, shuffle=True)
