@@ -1,0 +1,7 @@
+neural_network_simple/cifar-10-batches-py/**
+neural_network_simple/testing/**
+neural_network_simple/training/**
+logistic_regression/testing_income/**
+logistic_regression/testing_mnist/**
+logistic_regression/training_mnist/**
+logistic_regression/training_income/**
