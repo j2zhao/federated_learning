@@ -50,4 +50,4 @@ if __name__ == "__main__":
     )
 
     utils.set_initial_params(model)
-    fl.client.start_numpy_client("localhost:5040", client=MnistClient())
+    fl.client.start_numpy_client("10.128.0.2:5040", client=MnistClient())
