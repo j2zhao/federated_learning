@@ -17,19 +17,6 @@ def fit_round(rnd: int) -> Dict:
     """Send round number to client."""
     return {"rnd": rnd}
 
-def get_on_fit_config_fn() -> Callable[[int], Dict[str, str]]:
-    """Return a function which returns training configurations."""
-
-    def fit_config(rnd: int) -> Dict[str, str]:
-        """Return a configuration with static batch size and (local) epochs."""
-        config = {
-            "learning_rate": str(0.001),
-            "batch_size": str(32),
-        }
-        return config
-
-    return fit_config
-
 def get_eval_fn(model):
     """Return an evaluation function for server-side evaluation."""
 
@@ -40,37 +27,25 @@ def get_eval_fn(model):
         set_model_parameters(model, parameters)
         loss, accuracy = test(model, valdata)
         true_loss, true_accuracy = test(model, testdata)
+        end = time.time()
         with open('log_accuracy.txt', 'a') as f:
             f.write("loss: {}, accuracy: {} \n".format(true_loss, true_accuracy))
+        with open('log_performance.txt', 'a') as f:
+            f.write("time: {} \n".format(end))
         return loss, {"accuracy": accuracy}
 
     return evaluate
-
-class TimeStrategy(fl.server.strategy.FedAvg):
-
-    def configure_fit(self, rnd, weights, client_manager):
-        if start == 0:
-            start = time.time()
-        return super.configure_fit(rnd,weights, client_manager)
-
-
-    def evaluate(self, weights):
-        result = super().evaluate(weights)
-        with open('log_performance.txt', 'a') as f:
-            f.write("time: {} \n".format(end - start))
-        return result
-
 
 
 if __name__ == "__main__":
     start = 0
     net = Net().to(DEVICE)
-    strategy = TimeStrategy(
+    strategy = fl.server.strategy.FedAvg(
         min_available_clients=4,
         on_fit_config_fn=fit_round,
         eval_fn=get_eval_fn(net),
         min_fit_clients = 2
     )
-    fl.server.start_server("10.128.0.2:5040", strategy=strategy, config={"num_rounds": 100})
+    fl.server.start_server("10.128.0.2:5040", strategy=strategy, config={"num_rounds": 300})
     end = time.time()
     print(end-start)
