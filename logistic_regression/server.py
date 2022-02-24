@@ -51,7 +51,7 @@ if __name__ == "__main__":
     model = LogisticRegression()
     utils.set_initial_params(model)
     strategy = fl.server.strategy.FedAvg(
-        min_available_clients=4,
+        min_available_clients=8,
         eval_fn=get_eval_fn(model),
         on_fit_config_fn=fit_round,
         min_fit_clients = 2
