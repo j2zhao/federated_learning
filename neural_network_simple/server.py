@@ -20,8 +20,8 @@ def fit_round(rnd: int) -> Dict:
 def get_eval_fn(model):
     """Return an evaluation function for server-side evaluation."""
 
-    testdata = load_test('testing_mnist/test.pt')
-    valdata = load_test('training_mnist/train4.pt')
+    testdata = load_test('testing/test.pt')
+    valdata = load_test('training/train4.pt')
 
     def evaluate(parameters: fl.common.Weights):
         set_model_parameters(model, parameters)
