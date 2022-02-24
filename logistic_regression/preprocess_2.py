@@ -15,7 +15,7 @@ def duplicate(data, n):
     return data
 
 def split_train_test(data):
-    test = data[:60000]
+    train = data[:60000]
     test = data[60000:]
     return train, test
 
