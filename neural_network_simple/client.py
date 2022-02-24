@@ -40,7 +40,7 @@ class CifarClient(fl.client.NumPyClient):
 if __name__ == "__main__":
 # Load model and data
     net = Net().to(DEVICE)
-    test_dir = 'training/train4.pt'
+    test_dir = 'testing/test.pt'
     train_dir = 'training/train' + sys.argv[1] + '.pt'
     trainloader, testloader, num_examples = load_data(train_dir, test_dir)
-    fl.client.start_numpy_client("localhost:8080", client=CifarClient())
+    fl.client.start_numpy_client("10.128.0.2:5040", client=CifarClient())
