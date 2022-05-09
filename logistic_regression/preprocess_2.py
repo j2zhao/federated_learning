@@ -47,8 +47,9 @@ if __name__ == "__main__":
     #print(train.shape)
     train = preprocess()
     train, test = split_train_test(train)
+    print(train.shape)
     #print(train.shape)
-    #train = duplicate(train, 10)
+    train = duplicate(train, 10)
     print(train.shape)
     trains = split_categories(train, num = 8)
     training_dir = 'training_mnist'

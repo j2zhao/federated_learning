@@ -46,5 +46,6 @@ def load_data(num = 8, size = 6250):
 
 if __name__ == "__main__":
     trainsets, testset = load_data()
+    print(len(trainsets))
     save_data(trainsets, "training", 'train')
     save_data(testset, "testing", 'test')
