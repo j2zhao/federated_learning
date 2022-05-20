@@ -1,15 +1,11 @@
 from collections import OrderedDict
 
-import torch
-from torch.utils.data import DataLoader
 from model import *
 import flwr as fl
 import sys
 import numpy as np
 from keras.preprocessing.image import ImageDataGenerator
 
-
-DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 def load_data(train_dir, trainlb_dir, test_dir, testlb_dir):
     """Load CIFAR-10 (training and test set)."""
@@ -62,5 +58,5 @@ if __name__ == "__main__":
     trainlb_dir = 'training/trainlb' + sys.argv[1] + '.npy'
 
     trainloader, testloader = load_data(train_dir, trainlb_dir, test_dir, testlb_dir)
-    # fl.client.start_numpy_client("10.128.0.2:5040", client=CifarClient())
-    fl.client.start_numpy_client("localhost:8040", client=CifarClient())
+    fl.client.start_numpy_client("10.128.0.2:5040", client=CifarClient())
+    #fl.client.start_numpy_client("localhost:8040", client=CifarClient())
