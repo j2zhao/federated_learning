@@ -45,7 +45,7 @@ class CifarClient(fl.client.NumPyClient):
 
     def evaluate(self, parameters, config):
         net.set_weights(parameters)
-        loss, accuracy = net.evaluate(test_gen)
+        loss, accuracy = net.evaluate(testloader)
         return loss, 1000, {"accuracy": accuracy} # secound argument len(test)
 
 
