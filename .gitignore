@@ -6,3 +6,6 @@ logistic_regression/testing_mnist/**
 logistic_regression/training_mnist/**
 logistic_regression/training_income/**
 **/__pycache__/**
+neural_network_covid/covidx-cxr2/**
+neural_network_covid/training/**
+neural_network_covid/testing/**
