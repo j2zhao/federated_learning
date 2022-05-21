@@ -38,10 +38,10 @@ class CifarClient(fl.client.NumPyClient):
 
     def fit(self, parameters, config):
         net.set_weights(parameters)
-        steps = 10
+        #steps = 10
         #net.fit(x_train, y_train, epochs=1, batch_size=32, steps_per_epoch=3)
-        net.fit(trainloader, epochs=1, steps_per_epoch=steps)
-        return net.get_weights(), steps*32, {} # secound argument len(train)
+        net.fit(trainloader, epochs=1)
+        return net.get_weights(), 3810, {} # secound argument len(train)
 
     def evaluate(self, parameters, config):
         net.set_weights(parameters)
