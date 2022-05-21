@@ -15,7 +15,7 @@ def train_test_array(value, split = 8):
     train_df = train_df.drop(['patient id', 'data source'], axis=1)
 
     #train_df = train_df.sample(n=num_samples, random_state=0)
-    train_df = np.random.shuffle(train_df)
+    train_df = train_df.sample(frac = 1, random_state = 42)
     train_df = np.array_split(train_df, split)[value]
 
     num_samples = train_df.shape[0]
