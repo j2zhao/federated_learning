@@ -57,6 +57,7 @@ if __name__ == "__main__":
         min_fit_clients = 2
     )
     #10.128.0.2:5040
-    fl.server.start_server("10.128.0.2:5040", strategy=strategy, config={"num_rounds": 301})
+    #fl.server.start_server("10.128.0.2:5040", strategy=strategy, config={"num_rounds": 301})
+    fl.server.start_server("localhost:8040", strategy=strategy, config={"num_rounds": 301})
     end = time.time()
     print(end-start)

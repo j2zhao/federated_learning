@@ -9,8 +9,8 @@ from sklearn.metrics import log_loss
 
 import utils_2 as utils
 
-train_dir_name = "training_mnist"
-test_dir_name = "testing_mnist"
+train_dir_name = "training_income"
+test_dir_name = "testing_income"
 class MnistClient(fl.client.NumPyClient):
     def get_parameters(self):  # type: ignore
         return utils.get_model_parameters(model)
@@ -50,4 +50,5 @@ if __name__ == "__main__":
     )
 
     utils.set_initial_params(model)
-    fl.client.start_numpy_client("10.128.0.2:5040", client=MnistClient())
+    #fl.client.start_numpy_client("10.128.0.2:5040", client=MnistClient())
+    fl.client.start_numpy_client("localhost:8040", client=MnistClient())

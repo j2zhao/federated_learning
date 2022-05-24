@@ -43,4 +43,5 @@ if __name__ == "__main__":
     test_dir = 'testing/test.pt'
     train_dir = 'training/train' + sys.argv[1] + '.pt'
     trainloader, testloader, num_examples = load_data(train_dir, test_dir)
-    fl.client.start_numpy_client("10.128.0.2:5040", client=CifarClient())
+    #fl.client.start_numpy_client("10.128.0.2:5040", client=CifarClient())
+    fl.client.start_numpy_client("localhost:8040", client=CifarClient())
