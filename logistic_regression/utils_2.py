@@ -35,14 +35,14 @@ def set_initial_params(model: LogisticRegression):
     information.
     """
     # INCOME FEATURES
-    # n_classes = 2  # MNIST has 10 classes
-    # n_features = 104  # Number of features in dataset
-    # model.classes_ = np.array([i for i in range(2)])
+    n_classes = 2  # MNIST has 10 classes
+    n_features = 104  # Number of features in dataset
+    model.classes_ = np.array([i for i in range(2)])
 
     # MNIST
-    n_classes = 10  # MNIST has 10 classes
-    n_features = 784  # Number of features in dataset
-    model.classes_ = np.array([i for i in range(10)])
+    # n_classes = 10  # MNIST has 10 classes
+    # n_features = 784  # Number of features in dataset
+    # model.classes_ = np.array([i for i in range(10)])
 
     model.coef_ = np.zeros((n_classes, n_features))
     if model.fit_intercept:
