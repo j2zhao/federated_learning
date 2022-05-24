@@ -16,8 +16,8 @@ def fit_round(rnd: int) -> Dict:
 def get_eval_fn(model: LogisticRegression):
     """Return an evaluation function for server-side evaluation."""
 
-    X_test = np.load('testing_mnist/test_X.npy')
-    y_test = np.load('testing_mnist/test_y.npy')
+    X_test = np.load('testing_income/test_X.npy')
+    y_test = np.load('testing_income/test_y.npy')
     def evaluate(parameters: fl.common.Weights):
         utils.set_model_params(model, parameters)
         loss = log_loss(y_test, model.predict_proba(X_test))
