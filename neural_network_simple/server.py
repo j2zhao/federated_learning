@@ -41,7 +41,7 @@ if __name__ == "__main__":
     start = 0
     net = Net().to(DEVICE)
     strategy = fl.server.strategy.FedAvg(
-        min_available_clients=4,
+        min_available_clients=8,
         on_fit_config_fn=fit_round,
         eval_fn=get_eval_fn(net),
         min_fit_clients = 2
