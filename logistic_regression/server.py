@@ -54,7 +54,7 @@ if __name__ == "__main__":
         min_available_clients=8,
         eval_fn=get_eval_fn(model),
         on_fit_config_fn=fit_round,
-        min_fit_clients = 2
+        min_fit_clients = 8
     )
     #10.128.0.2:5040
     #fl.server.start_server("10.128.0.2:5040", strategy=strategy, config={"num_rounds": 301})
