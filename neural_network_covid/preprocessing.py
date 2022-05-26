@@ -9,7 +9,7 @@ import os
 import pickle
 
 
-def train_test_array(value, split = 8):
+def train_test_array(value, split = 9):
     train_df = pd.read_csv('./covidx-cxr2/train.txt', sep=" ", header=None)
     train_df.columns = ['patient id', 'filename', 'class', 'data source']
     train_df = train_df.drop(['patient id', 'data source'], axis=1)
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     # save_data(trainlb, "training", 'trainlb' + sys.argv[1])
     # save_data(testset, "testing", 'test')
     # save_data(testlb, "testing", 'testlb' + sys.argv[1])
-    for i in range(8):
+    for i in range(9):
         trainset, trainlb, testset , testlb = train_test_array(value=i) # change split value if needed
         save_data(trainset, "training", 'train' + str(i))
         save_data(trainlb, "training", 'trainlb' + str(i))
