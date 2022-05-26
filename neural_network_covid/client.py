@@ -49,7 +49,7 @@ class CifarClient(fl.client.NumPyClient):
         ]
 
         net.fit(trainloader, epochs=1, validation_data=valloader, callbacks=[callbacks])
-        return net.get_weights(), 3810, {} # secound argument len(train)
+        return net.get_weights(), 3810, {"accuracy": 0} # secound argument len(train)
 
     def evaluate(self, parameters, config):
         net.set_weights(parameters)

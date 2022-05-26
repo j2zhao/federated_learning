@@ -29,7 +29,7 @@ class CifarClient(fl.client.NumPyClient):
     def fit(self, parameters, config):
         set_model_parameters(net, parameters)
         train(net, trainloader, epochs=1)
-        return self.get_parameters(), num_examples["trainset"], {}
+        return self.get_parameters(), num_examples["trainset"], {"accuracy": 0}
 
     def evaluate(self, parameters, config):
         set_model_parameters(net, parameters)
