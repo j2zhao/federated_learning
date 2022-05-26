@@ -18,12 +18,6 @@ def gen_net():
         tf.keras.layers.Dense(1, activation='sigmoid')
     ])
 
-    callbacks = [
-        tf.keras.callbacks.ModelCheckpoint("covid_classifier_model.h5", save_best_only=True, verbose=0),
-        tf.keras.callbacks.EarlyStopping(patience=3, monitor='val_loss', verbose=1),
-        tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=2, verbose=1)
-    ]
-
     model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
                 loss='binary_crossentropy',
                 metrics=['accuracy'])

@@ -39,6 +39,12 @@ class CifarClient(fl.client.NumPyClient):
 
 if __name__ == "__main__":
 # Load model and data
+    callbacks = [
+        tf.keras.callbacks.ModelCheckpoint("covid_classifier_model.h5", save_best_only=True, verbose=0),
+        tf.keras.callbacks.EarlyStopping(patience=3, monitor='val_loss', verbose=1),
+        tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=2, verbose=1)
+    ]
+    
     net = Net().to(DEVICE)
     test_dir = 'testing/test.pt'
     train_dir = 'training/train' + sys.argv[1] + '.pt'
