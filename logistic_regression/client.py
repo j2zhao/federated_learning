@@ -13,7 +13,7 @@ train_dir_name = "training_income"
 test_dir_name = "testing_income"
 class MnistClient(fl.client.NumPyClient):
     def get_parameters(self):  # type: ignore
-        return utils.get_model_parameters(model)
+        return list(utils.get_model_parameters(model))
 
     def fit(self, parameters, config):  # type: ignore
         utils.set_model_params(model, parameters)
@@ -21,7 +21,7 @@ class MnistClient(fl.client.NumPyClient):
             warnings.simplefilter("ignore")
             model.fit(X_train, y_train)
         print(f"Training finished for round {config['rnd']}")
-        return utils.get_model_parameters(model), len(X_train), {"accuracy": 0}
+        return list(utils.get_model_parameters(model)), len(X_train), {"accuracy": 0}
 
     def evaluate(self, parameters, config):  # type: ignore
         utils.set_model_params(model, parameters)
