@@ -19,7 +19,7 @@ class CifarClient(fl.client.NumPyClient):
         #steps = 10
         #net.fit(x_train, y_train, epochs=1, batch_size=32, steps_per_epoch=3)
 
-        net.fit(X_train, y_train, epochs=1)
+        net.fit(X_train, y_train, batch_size=X_train.shape[0], epochs=1)
         return net.get_weights(), 3810, {"accuracy": 0} # secound argument len(train)
 
     def evaluate(self, parameters, config):
