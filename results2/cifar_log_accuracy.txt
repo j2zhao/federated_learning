@@ -1,5 +1,3 @@
-loss: 720.9522964954376, accuracy: 0.1 
-loss: 720.2948615550995, accuracy: 0.1 
 loss: 719.500411272049, accuracy: 0.1003 
 loss: 718.1584753990173, accuracy: 0.1008 
 loss: 715.3915264606476, accuracy: 0.1608 
