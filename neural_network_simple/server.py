@@ -41,10 +41,10 @@ if __name__ == "__main__":
     start = 0
     net = Net().to(DEVICE)
     strategy = fl.server.strategy.FedAvg(
-        min_available_clients=2,
+        min_available_clients=8,
         on_fit_config_fn=fit_round,
         eval_fn=get_eval_fn(net),
-        min_fit_clients = 8
+        min_fit_clients = 2
     )
     #fl.server.start_server("localhost:8040", strategy=strategy, config={"num_rounds": 301})
     fl.server.start_server("10.128.0.2:5040", strategy=strategy, config={"num_rounds": 301})

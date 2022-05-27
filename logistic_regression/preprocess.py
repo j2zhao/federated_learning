@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import os
+from sklearn.preprocessing import StandardScaler
 
 def preprocess(data):
     # remove space
@@ -45,6 +46,11 @@ def XY_split(data, name, folder_name):
         os.mkdir(folder_name)
 
     X = data.drop("income_>50K",axis=1)
+    
+    scaler = StandardScaler()
+    X = X.to_numpy(dtype=np.float32)
+    X = scaler.fit_transform(X)
+    
     y = data["income_>50K"]
     X_file = os.path.join(folder_name, name + "_X.npy")
     y_file = os.path.join(folder_name, name + "_y.npy")
@@ -57,8 +63,8 @@ if __name__ == "__main__":
     train = preprocess(train)
     train, test = split_train_test(train)
     print(train.shape)
-    train = duplicate(train, 10)
-    print(train.shape)
+    #train = duplicate(train, 10)
+    #print(train.shape)
     trains = split_categories(train, num = 8)
     training_dir = 'training_income'
     testing_dir = 'testing_income'
